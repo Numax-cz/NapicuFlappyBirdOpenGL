@@ -1,6 +1,7 @@
 
 using GLFW;
 using NapicuEngine.Engine;
+using NapicuEngine.Objects;
 using static OpenGL.GL;
 
 namespace NapicuEngine
@@ -26,27 +27,22 @@ namespace NapicuEngine
             glClearColor(MathF.Sin(EngineTime.TotalTime), 0, 0, 1);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            Player.Draw();
+            var i = new Square(0.25f, 0.5f, 0.0f);
+ 
+    
+            i.Render();
             
             Glfw.SwapBuffers(DisplayManager.Window);
         }
 
         protected override void Init()
         {
-          
+
         }
 
         protected override void LoadContent()
         {
-
-            Player = new VertexArray(new float[]
-            {
-                -0.5f, -0.5f, //0
-                0.5f, -0.5f, //1
-                0.5f, 0.5f, //2
-                -0.5f, 0.5f, //3
-                
-            }, new []{1, 3, 4});
+            
         }
     }
 }
