@@ -27,10 +27,11 @@ public class Square : Engine.Mesh
         
         
         float [] pos = new float [] {
-            -size, -size,
-            size, -size, 
-            size, size, 
-            -size, size,
+            -size, -size, 1f, 0f, 1f,
+            size, -size, 1f, 1f, 0f,
+            size, size, 0f, 1f, 0f,
+            -size, size,0f, 0f, 1f,
+
         };
 
         int[] ints = new[]
