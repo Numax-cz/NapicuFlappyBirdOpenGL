@@ -9,10 +9,13 @@ public class ShaderUtils
     protected static readonly string defaultFolder = @"Engine/shaders/";
     protected static string Vertex;
     protected static string Fragment;
+    protected static uint Program;
     
+
     public static uint Load(string vert, string frag)
     {
 
+        //TODO catch errors
         Vertex = System.IO.File.ReadAllText(defaultFolder + vert);
         Fragment = System.IO.File.ReadAllText(defaultFolder + frag);
         
@@ -42,18 +45,19 @@ public class ShaderUtils
             throw new Exception("Fragment shader failed to compile");
         }  
         
-        uint program = glCreateProgram();
-        glAttachShader(program, vs);
-        glAttachShader(program, fs);
+        Program = glCreateProgram();
+        glAttachShader(Program, vs);
+        glAttachShader(Program, fs);
             
-        glLinkProgram(program);
+        glLinkProgram(Program);
         
-        glDetachShader(program, vs);
-        glDetachShader(program, fs);
+        glDetachShader(Program, vs);
+        glDetachShader(Program, fs);
+        glValidateProgram(Program);
         glDeleteShader(vs);
         glDeleteShader(fs);
         
-        return program;
+        return Program;
     }
     
 

@@ -16,7 +16,7 @@ namespace NapicuEngine.Engine
         public float[] Vertices { get; set; }
         protected int[] _indices { get; set; }
         
-        protected uint ShaderProgram { get; set; }
+        protected Shader basicShader { get; set; }
         
 
 
@@ -29,7 +29,7 @@ namespace NapicuEngine.Engine
             _indices = indices;
 
             // Load shader program
-            ShaderProgram  = ShaderUtils.Load("square.vert", "square.frag");
+            basicShader  = new Shader("square.vert", "square.frag");
 
             
 
@@ -86,8 +86,11 @@ namespace NapicuEngine.Engine
 
         protected unsafe void Draw()
         {
+            
             //Use shader program
-            glUseProgram(ShaderProgram);
+            glUseProgram(basicShader.ProgramID);
+            
+            basicShader.setUniform2f("AtrPos");
             
             //Render the mesh 
             glBindVertexArray(Vao);
