@@ -1,3 +1,4 @@
+using NapicuEngine.Engine.utils;
 using OpenGL;
 using static OpenGL.GL;
 
@@ -10,11 +11,12 @@ namespace NapicuEngine.Engine
         private uint Vbo { get; set; }
 
         private uint Ibo { get; set; }
-        private Shader Shader { get; set; }
+
         
         public float[] Vertices { get; set; }
         protected int[] _indices { get; set; }
         
+        protected uint ShaderProgram { get; set; }
         
 
 
@@ -26,28 +28,9 @@ namespace NapicuEngine.Engine
             // Set indices buffer 
             _indices = indices;
 
-            string vertexShader = @"#version 330 core
-                                    layout (location = 0) in vec2 aPosition;
-                                    layout (location = 1) in vec3 aColor;
-                                    out vec3 color;
-    
-                                    void main() 
-                                    {
-                                        color = aColor;
-                                        gl_Position = vec4(aPosition.xy, 0, 1.0);
-                                    }";
+            // Load shader program
+            ShaderProgram  = ShaderUtils.Load("square.vert", "square.frag");
 
-            string fragmentShader = @"#version 330 core
-                                    out vec4 FragColor;
-                                    in vec3 color;
-
-                                    void main() 
-                                    {
-                                        FragColor = vec4(color, 1.0f);
-                                    }";
-
-            Shader = new Shader(vertexShader, fragmentShader);
-            Shader.Load();
             
 
             
@@ -103,7 +86,8 @@ namespace NapicuEngine.Engine
 
         protected unsafe void Draw()
         {
-            Shader.Use();
+            //Use shader program
+            glUseProgram(ShaderProgram);
             
             //Render the mesh 
             glBindVertexArray(Vao);
