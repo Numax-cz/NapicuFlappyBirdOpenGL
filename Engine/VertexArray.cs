@@ -1,3 +1,4 @@
+using GLFW;
 using NapicuEngine.Engine.utils;
 using OpenGL;
 using static OpenGL.GL;

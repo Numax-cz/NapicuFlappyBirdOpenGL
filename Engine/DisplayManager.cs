@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using GLFW;
+using NapicuEngine.Engine.Events;
 using static OpenGL.GL;
 
 namespace NapicuEngine.Engine
@@ -31,6 +32,9 @@ namespace NapicuEngine.Engine
                 return;
             }
 
+            Glfw.SetKeyCallback(Window, Keyboard.KeyCallback);
+
+            
             CenterWindowPosition(width, height);
             
             Glfw.MakeContextCurrent(Window);

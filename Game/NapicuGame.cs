@@ -1,6 +1,7 @@
 
 using GLFW;
 using NapicuEngine.Engine;
+using NapicuEngine.Engine.Events;
 using NapicuEngine.Engine.Math;
 using NapicuEngine.Objects;
 using OpenGL;
@@ -21,7 +22,10 @@ namespace NapicuEngine
         
         protected override void Update()
         {
-        
+            if (Keyboard.IsKeyPressed((int)GLFW.Keys.W))
+            {
+                Player.Position = new Vector2f(0.5f, 0.5f);
+            }
         }
 
         protected override void Render()
@@ -43,7 +47,7 @@ namespace NapicuEngine
         protected override void LoadContent()
         {
             Player = new Square(0.25f, -0.5f, -0.5f);
-
+   
         }
     }
 }
