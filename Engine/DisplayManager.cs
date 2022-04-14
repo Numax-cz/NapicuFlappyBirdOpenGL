@@ -4,6 +4,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using GLFW;
 using Napicu.Engine.Events;
+using Napicu.Engine.Math;
 using static OpenGL.GL;
 
 namespace Napicu.Engine
@@ -12,6 +13,7 @@ namespace Napicu.Engine
     {
         public static Window Window { get; set; }
         public static Vector2 WindowSize { get; set; }
+        public static Camera Camera { get; set; } = new Camera(new Vector2f());
 
         public static void Creat(string title, int width, int height)
         {

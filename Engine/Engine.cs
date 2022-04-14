@@ -10,6 +10,7 @@ namespace Napicu.Engine
         protected string Title { get; set; }
         protected int Width { get; set; }
         protected int Height { get; set; }
+        
 
         public Engine(string title, int width, int height)
         {
@@ -43,8 +44,5 @@ namespace Napicu.Engine
         protected abstract void Render();
         protected abstract void Init();
         protected abstract  void LoadContent();
-
-        
     }
-        
 }

@@ -6,24 +6,23 @@ namespace NapicuGame.Objects{
     public class Block : Napicu.Engine.Object
     {
         
-        protected override Shader Shader { get; set; } = new Shader("square.vert", "square.frag");
+        protected override Shader Shader { get; set; } = new Shader("default.vert", "default.frag");
         protected override VertexArray Mesh { get; set; }
         public override Vector2f Position { get; set; }
 
         protected override float GravityForce { get; set; } = 0f;
-        
 
 
-        public Block(float size, float x, float y)
+        public Block(float x, float y, float width, float height)
         {
             
             Position = new Vector2f(x, y);
 
             float [] pos = new float [] {
-                -size, -size, 1f, 0f, 1f,
-                size, -size, 1f, 1f, 0f,
-                size, size, 0f, 1f, 0f,
-                -size, size,0f, 0f, 1f,
+                0.0f, 0.0f,    0f,  0f,  0f,
+                0.0f, height,  0f,  0f,  0f,
+                width,height,  0f,  0f,  0f,
+                width, 0.0f,   0f,  0f,  0f,
 
             };
 
@@ -32,6 +31,9 @@ namespace NapicuGame.Objects{
                 0, 1, 2,
                 2, 3, 0
             };
+            
+
+           
             
             Mesh = new VertexArray(pos, ints);
         }

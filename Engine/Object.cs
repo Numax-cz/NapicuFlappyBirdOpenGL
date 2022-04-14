@@ -14,13 +14,18 @@ namespace Napicu.Engine
         
         protected Object()
         {
-            this.Velocity = new Vector2f(0, 0);
+            Velocity = new Vector2f(0, 0);
         }
         
         public void Render()
         {
+            
             // Set the shader
             glUseProgram(Shader.ProgramID);
+            
+            Shader.setUniformMatrix4fv("pMatrix", DisplayManager.Camera.GetProjection().elements);
+            Shader.setUniformMatrix4fv("vMatrix", DisplayManager.Camera.GetViewMatrix().elements);
+            
             // Gravity
             Gravity.ApplyGravity(this, this.GravityForce);
             // Update the position
@@ -31,8 +36,13 @@ namespace Napicu.Engine
 
         protected void UpdatePosition()
         {
-            Matrix4f newPost = Matrix4f.translate(new Vector2f(Position.x, Position.y));
+            Matrix4f newPost = Matrix4f.Translate(new Vector2f(Position.x, Position.y));
             Shader.setUniformMatrix4fv("mMatrix", newPost.elements);
+        }
+
+        public void SetPrMatrix(Matrix4f matrix)
+        {
+            Shader.setUniformMatrix4fv("pMatrix", matrix.elements);
         }
 
     }

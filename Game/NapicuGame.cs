@@ -39,6 +39,7 @@ namespace NapicuGame
             glClearColor(MathF.Sin(EngineTime.TotalTime), 0, 0, 1);
            //glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
+            
             _player.Render();
             _ground.Render();
             
@@ -52,10 +53,12 @@ namespace NapicuGame
 
         protected override void LoadContent()
         {
-            _player = new Square(0.25f, -0.5f, -0.5f);
+            _player = new Square(150f, 50f, 300f);
             
-            _ground = new Block(0.15f, 0.5f, -0.5f);
+            _ground = new Block(50f, 300f, 1920, 40f);
 
+      
+            
         }
     }
 }

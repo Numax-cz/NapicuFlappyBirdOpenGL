@@ -82,8 +82,6 @@ namespace Napicu.Engine
 
         protected unsafe void Draw()
         {
-            
-            //Use shader program
 
             //Render the mesh 
             glBindVertexArray(Vao);
