@@ -4,7 +4,7 @@ using static OpenGL.GL;
 
 namespace Napicu.Engine
 {
-    public abstract class Object
+    public abstract class GameObject
     {
         protected abstract VertexArray Mesh { get; set; }
         public abstract Vector2f Position { get; set; }
@@ -12,7 +12,7 @@ namespace Napicu.Engine
         protected abstract float GravityForce { get; set; }
         public Vector2f Velocity { get; set; }
         
-        protected Object()
+        protected GameObject()
         {
             Velocity = new Vector2f(0, 0);
         }

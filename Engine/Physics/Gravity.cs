@@ -7,7 +7,7 @@ namespace Napicu.Engine.Physics
     {
 
         
-        public static void ApplyGravity(Object meshObject, float GravityForce)
+        public static void ApplyGravity(GameObject meshObject, float GravityForce)
         {
             meshObject.Position.x += meshObject.Velocity.x;
             meshObject.Position.y += meshObject.Velocity.y;

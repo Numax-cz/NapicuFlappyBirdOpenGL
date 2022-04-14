@@ -8,7 +8,7 @@ using Napicu.Engine.Math;
 using NapicuGame.Objects;
 using OpenGL;
 using static OpenGL.GL;
-using Object = Napicu.Engine.Object;
+using Object = Napicu.Engine.GameObject;
 
 
 namespace NapicuGame
@@ -17,8 +17,8 @@ namespace NapicuGame
     public class NapicuGame : Napicu.Engine.Engine
     {
 
-        private Object _player;
-        private Object _ground;
+        private static Renderer _renderer = new Renderer();
+        public Object _player;
         
         public NapicuGame(string title, int width, int height) : base(title, width, height)
         {
@@ -27,10 +27,7 @@ namespace NapicuGame
         
         protected override void Update()
         {
-            if (Keyboard.IsKeyPressed((int)GLFW.Keys.W))
-            {
-                _player.Position = new Vector2f(0.5f, 0.5f);
-            }
+
         }
 
         protected override void Render()
@@ -41,8 +38,8 @@ namespace NapicuGame
             glClear(GL_COLOR_BUFFER_BIT);
             
             _player.Render();
-            _ground.Render();
-            
+            NapicuGame._renderer.Render();
+
             Glfw.SwapBuffers(DisplayManager.Window);
         }
 
@@ -53,12 +50,9 @@ namespace NapicuGame
 
         protected override void LoadContent()
         {
-            _player = new Square(150f, 50f, 300f);
-            
-            _ground = new Block(50f, 300f, 1920, 40f);
+             _player = new Square(150f, 50f, 300f);
 
-      
-            
+
         }
     }
 }

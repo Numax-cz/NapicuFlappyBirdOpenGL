@@ -4,12 +4,11 @@ using Napicu.Engine;
 
 namespace NapicuGame.Objects
 {
-    public class Square : Napicu.Engine.Object
+    public class Square : Napicu.Engine.GameObject
     {
         protected override Shader Shader { get; set; } = new Shader("default.vert", "default.frag");
         protected override VertexArray Mesh { get; set; }
         public override Vector2f Position { get; set; }
-
         protected override float GravityForce { get; set; } = 0.85f;
         
 

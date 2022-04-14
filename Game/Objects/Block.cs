@@ -3,7 +3,7 @@ using Napicu.Engine.Math;
 
 namespace NapicuGame.Objects{
     
-    public class Block : Napicu.Engine.Object
+    public class Block : Napicu.Engine.GameObject
     {
         
         protected override Shader Shader { get; set; } = new Shader("default.vert", "default.frag");
