@@ -9,12 +9,14 @@ public class Square : Engine.Mesh
 {
     protected override VertexArray VertexArray { get; set; }
     protected override Vector2f Position { get; set; }
+    protected override Shader Shader { get; set; }
 
     public Square(float size, float x, float y)
     {
+        Shader = new Shader("square.vert", "square.frag");
         Position = new Vector2f(x, y);
 
-        
+
       
         // x + size, y + size,
         // x + size, y - size,
@@ -38,7 +40,6 @@ public class Square : Engine.Mesh
         };
         
         VertexArray = new VertexArray(pos, ints);
-        
     }
     
 

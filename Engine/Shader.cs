@@ -7,36 +7,43 @@ namespace NapicuEngine.Engine;
 public class Shader
 {
     public uint ProgramID { get;  set; }
+    protected bool Enabled { get; set; }
 
-    private Dictionary<String, int> _locationCache = new Dictionary <String, int>();
+    private Dictionary<String, int> _cache = new Dictionary <String, int>();
     
     public int getUniform(String name) {
-        if (_locationCache.ContainsKey(name))
-            return _locationCache[name];      
+        if (_cache.ContainsKey(name))
+            return _cache[name];      
 		
         int result = glGetUniformLocation(ProgramID, name);
         if (result == -1) 
             Console.Error.WriteLine("Shader error uniform: '" + name + "'!");
         else
-            _locationCache.Add(name, result);
+            _cache.Add(name, result);
         return result;
     }
     
-    public void setUniform2f(String name) //TODO RENAME
+    public void setUniformMatrix4fv(string name, float[] elements)
     {
-
-        //TODO HERE
-        // var i =  Matrix4f.translate(new Vector2f(-0.5f, -0.5f));
-        // glUniformMatrix4fv(getUniform(name), 1, false, i.elements);
-        
-        //glUniformMat4f(getUniform(name), 0.5f, 0.5f);
+        if (!Enabled) Enable();
+        glUniformMatrix4fv(getUniform(name), 1, false, elements);
     }
 
-    
-    
     public Shader(string vertex, string fragment)
     {
         this.ProgramID = ShaderUtils.Load(vertex, fragment);
+    }
+    
+    public void Enable()
+    {
+        glUseProgram(ProgramID);
+        Enabled = true;
+    }
+    
+    public void Disable()
+    {
+        glUseProgram(0);
+        Enabled = false;
     }
     
 }

@@ -16,7 +16,7 @@ namespace NapicuEngine.Engine
         public float[] Vertices { get; set; }
         protected int[] _indices { get; set; }
         
-        protected Shader basicShader { get; set; }
+
         
 
 
@@ -27,13 +27,8 @@ namespace NapicuEngine.Engine
             
             // Set indices buffer 
             _indices = indices;
-
-            // Load shader program
-            basicShader  = new Shader("square.vert", "square.frag");
-
-            
-
-            
+                
+            //Generate 
             Vao = glGenVertexArray();
             Vbo = glGenBuffer();
             Ibo = glGenBuffer();
@@ -88,10 +83,7 @@ namespace NapicuEngine.Engine
         {
             
             //Use shader program
-            glUseProgram(basicShader.ProgramID);
-            
-            basicShader.setUniform2f("AtrPos");
-            
+
             //Render the mesh 
             glBindVertexArray(Vao);
             glDrawElements(GL_TRIANGLES, _indices.Length, GL_UNSIGNED_INT, (void*)0);

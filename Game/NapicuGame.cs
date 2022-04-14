@@ -40,7 +40,7 @@ namespace NapicuEngine
 
         protected override void LoadContent()
         {
-            Player = new Square(0.25f, 0.5f, 0.0f);
+            Player = new Square(0.25f, -0.5f, -0.5f);
         }
     }
 }
