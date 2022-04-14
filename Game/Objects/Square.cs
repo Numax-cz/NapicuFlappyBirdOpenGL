@@ -8,7 +8,7 @@ namespace NapicuEngine.Objects;
 public class Square : Engine.Mesh
 {
     protected override VertexArray VertexArray { get; set; }
-    protected override Vector2f Position { get; set; }
+    public override Vector2f Position { get; set; }
     protected override Shader Shader { get; set; }
 
     public Square(float size, float x, float y)

@@ -1,7 +1,9 @@
 
 using GLFW;
 using NapicuEngine.Engine;
+using NapicuEngine.Engine.Math;
 using NapicuEngine.Objects;
+using OpenGL;
 using static OpenGL.GL;
 
 namespace NapicuEngine
@@ -23,12 +25,12 @@ namespace NapicuEngine
         }
 
         protected override void Render()
-        {
-
-           glClearColor(MathF.Sin(EngineTime.TotalTime), 0, 0, 1);
-           //glClearColor(0.0f, 0.0f, 0.0f, 1.0f); 
-           glClear(GL_COLOR_BUFFER_BIT);
-             Player.Render();
+        { 
+            glViewport(0, 0, Width, Height); 
+            glClearColor(MathF.Sin(EngineTime.TotalTime), 0, 0, 1);
+           //glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT);
+            Player.Render();
             
             Glfw.SwapBuffers(DisplayManager.Window);
         }
@@ -41,6 +43,7 @@ namespace NapicuEngine
         protected override void LoadContent()
         {
             Player = new Square(0.25f, -0.5f, -0.5f);
+
         }
     }
 }
