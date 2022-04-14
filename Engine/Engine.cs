@@ -2,7 +2,7 @@ using GLFW;
 using static OpenGL.GL;
 using Monitor = GLFW.Monitor;
 
-namespace NapicuEngine.Engine
+namespace Napicu.Engine
 {
     public abstract class Engine
     {

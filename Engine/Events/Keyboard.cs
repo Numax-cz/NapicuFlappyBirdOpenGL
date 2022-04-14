@@ -1,7 +1,7 @@
 using GLFW;
 using static OpenGL.GL;
 
-namespace NapicuEngine.Engine.Events
+namespace Napicu.Engine.Events
 {
     public class Keyboard
     {

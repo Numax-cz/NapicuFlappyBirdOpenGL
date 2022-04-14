@@ -1,9 +1,4 @@
-﻿
-using NapicuEngine;
-using NapicuEngine.Engine;
-using NapicuEngine.Engine.utils;
-
-namespace Napicu
+﻿namespace Napicu
 {
     class Program
     {
@@ -11,7 +6,7 @@ namespace Napicu
 
         public static void Main(string[] args)
         {
-            NapicuGame game = new NapicuGame("Napicu", 1280, 720);
+            NapicuGame.NapicuGame game = new NapicuGame.NapicuGame("Napicu", 1280, 720);
             game.Run();
         }
     }

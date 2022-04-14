@@ -1,8 +1,8 @@
 using System.Numerics;
-using NapicuEngine.Engine.Math;
-using NapicuEngine.Engine.utils;
+using Napicu.Engine.Math;
+using Napicu.Engine.utils;
 using static OpenGL.GL;
-namespace NapicuEngine.Engine;
+namespace Napicu.Engine;
 
 public class Shader
 {

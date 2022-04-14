@@ -1,19 +1,24 @@
 
+using System.Collections;
 using GLFW;
-using NapicuEngine.Engine;
-using NapicuEngine.Engine.Events;
-using NapicuEngine.Engine.Math;
-using NapicuEngine.Objects;
+
+using Napicu.Engine;
+using Napicu.Engine.Events;
+using Napicu.Engine.Math;
+using NapicuGame.Objects;
 using OpenGL;
 using static OpenGL.GL;
+using Object = Napicu.Engine.Object;
 
-namespace NapicuEngine
+
+namespace NapicuGame
 {
     
-    public class NapicuGame : Engine.Engine
+    public class NapicuGame : Napicu.Engine.Engine
     {
 
-        private Square Player;
+        private Object _player;
+        private Object _ground;
         
         public NapicuGame(string title, int width, int height) : base(title, width, height)
         {
@@ -24,7 +29,7 @@ namespace NapicuEngine
         {
             if (Keyboard.IsKeyPressed((int)GLFW.Keys.W))
             {
-                Player.Position = new Vector2f(0.5f, 0.5f);
+                _player.Position = new Vector2f(0.5f, 0.5f);
             }
         }
 
@@ -34,7 +39,8 @@ namespace NapicuEngine
             glClearColor(MathF.Sin(EngineTime.TotalTime), 0, 0, 1);
            //glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
-            Player.Render();
+            _player.Render();
+            _ground.Render();
             
             Glfw.SwapBuffers(DisplayManager.Window);
         }
@@ -46,8 +52,10 @@ namespace NapicuEngine
 
         protected override void LoadContent()
         {
-            Player = new Square(0.25f, -0.5f, -0.5f);
-   
+            _player = new Square(0.25f, -0.5f, -0.5f);
+            
+            _ground = new Block(0.15f, 0.5f, -0.5f);
+
         }
     }
 }

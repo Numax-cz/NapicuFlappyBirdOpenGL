@@ -1,4 +1,4 @@
-namespace NapicuEngine.Engine
+namespace Napicu.Engine
 {
     
     public class EngineTime

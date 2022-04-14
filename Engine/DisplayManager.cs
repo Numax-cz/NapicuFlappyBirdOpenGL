@@ -3,10 +3,10 @@ using System.Drawing;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using GLFW;
-using NapicuEngine.Engine.Events;
+using Napicu.Engine.Events;
 using static OpenGL.GL;
 
-namespace NapicuEngine.Engine
+namespace Napicu.Engine
 {
     public class DisplayManager
     {

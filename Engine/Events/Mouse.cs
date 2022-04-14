@@ -1,4 +1,4 @@
-namespace NapicuEngine.Engine.Events
+namespace Napicu.Engine.Events
 {
     public class Mouse
     {

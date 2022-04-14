@@ -1,9 +1,9 @@
 using GLFW;
-using NapicuEngine.Engine.utils;
+using Napicu.Engine.utils;
 using OpenGL;
 using static OpenGL.GL;
 
-namespace NapicuEngine.Engine
+namespace Napicu.Engine
 {
 
     public class VertexArray
