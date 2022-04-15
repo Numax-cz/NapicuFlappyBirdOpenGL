@@ -11,10 +11,15 @@ namespace Napicu.Engine
         protected abstract Shader Shader { get; set; }
         protected abstract float GravityForce { get; set; }
         public Vector2f Velocity { get; set; }
+
+        
+        
+        
         
         protected GameObject()
         {
             Velocity = new Vector2f(0, 0);
+            
         }
         
         public void Render()

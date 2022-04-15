@@ -17,8 +17,10 @@ namespace NapicuGame
     public class NapicuGame : Napicu.Engine.Engine
     {
 
+        
         private static Renderer _renderer = new Renderer();
         public Object _player;
+        
         
         public NapicuGame(string title, int width, int height) : base(title, width, height)
         {
@@ -50,10 +52,14 @@ namespace NapicuGame
 
         protected override void LoadContent()
         {
-             _player = new Square(150f, 50f, 300f);
+             _player = new Block(150f, 50f, 300f, 300f);
 
-
+             for (var i = 0; i < 100; i++)
+             {
+                 _renderer.Add(new Block( 20f * i, 20 * i,  20f,  20f));
+             }
         }
     }
+    
 }
 

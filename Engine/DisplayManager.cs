@@ -34,13 +34,15 @@ namespace Napicu.Engine
                 return;
             }
 
+            
             Glfw.SetKeyCallback(Window, Keyboard.KeyCallback);
-
             
             CenterWindowPosition(width, height);
-            
             Glfw.MakeContextCurrent(Window);
+            
             Import(Glfw.GetProcAddress);
+            
+            glEnable(GL_TEXTURE_2D);
             
             glViewport(0, 0, width, height);
             Glfw.SwapInterval(1);//TODO Vsync

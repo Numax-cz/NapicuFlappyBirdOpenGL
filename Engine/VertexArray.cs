@@ -12,11 +12,9 @@ namespace Napicu.Engine
         private uint Vbo { get; set; }
 
         private uint Ibo { get; set; }
-
-        
         public float[] Vertices { get; set; }
         protected int[] _indices { get; set; }
-        
+        protected uint _textureId { get; set; }
 
         
 
@@ -28,7 +26,8 @@ namespace Napicu.Engine
             
             // Set indices buffer 
             _indices = indices;
-                
+
+            
             //Generate 
             Vao = glGenVertexArray();
             Vbo = glGenBuffer();
@@ -60,8 +59,12 @@ namespace Napicu.Engine
             glVertexAttribPointer(1, 3, GL_FLOAT, false, 5 * sizeof(float), (void*)(2 * sizeof(float)));
             glEnableVertexAttribArray(1);
 
+//            glActiveTexture(GL_TEXTURE0);
+
+            
+            
             // Unbind Vbo
-           glBindBuffer(GL_ARRAY_BUFFER, 0);
+            glBindBuffer(GL_ARRAY_BUFFER, 0);
             // Unbind Ibo
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
             // Unbind Vao

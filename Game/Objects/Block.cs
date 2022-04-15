@@ -3,7 +3,7 @@ using Napicu.Engine.Math;
 
 namespace NapicuGame.Objects{
     
-    public class Block : Napicu.Engine.GameObject
+    public class Block : GameObject
     {
         
         protected override Shader Shader { get; set; } = new Shader("default.vert", "default.frag");
@@ -19,11 +19,10 @@ namespace NapicuGame.Objects{
             Position = new Vector2f(x, y);
 
             float [] pos = new float [] {
-                0.0f, 0.0f,    0f,  0f,  0f,
-                0.0f, height,  0f,  0f,  0f,
-                width,height,  0f,  0f,  0f,
-                width, 0.0f,   0f,  0f,  0f,
-
+                0.0f, 0.0f,  1f, 0f, 1f,
+                0.0f, height,  1f, 1f, 0f,
+                width, height,  0f, 1f, 0f,
+                width, 0.0f,  0f, 0f, 1f,
             };
 
             int[] ints = new[]

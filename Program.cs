@@ -1,4 +1,6 @@
-﻿namespace Napicu
+﻿using Napicu.Engine;
+
+namespace Napicu
 {
     class Program
     {
