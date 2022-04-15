@@ -52,7 +52,7 @@ namespace NapicuGame
 
         protected override void LoadContent()
         {
-             _player = new Block(150f, 50f, 300f, 300f);
+            _player = new Block(150f, 50f, 300f, 300f);
 
              for (var i = 0; i < 100; i++)
              {
