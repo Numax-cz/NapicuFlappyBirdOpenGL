@@ -12,6 +12,7 @@ namespace Napicu.Engine
         protected abstract float GravityForce { get; set; }
         public Vector2f Velocity { get; set; }
 
+        public Texture tex = new Texture("D:/Dokumenty/NapicuEngine/Game/assets/wall.png");
         
         
         
@@ -24,12 +25,14 @@ namespace Napicu.Engine
         
         public void Render()
         {
-            
-            // Set the shader
             glUseProgram(Shader.ProgramID);
+            glActiveTexture( GL_TEXTURE0 );
+            glBindTexture( GL_TEXTURE_2D, tex.Id );
             
             Shader.setUniformMatrix4fv("pMatrix", DisplayManager.Camera.GetProjection().elements);
             Shader.setUniformMatrix4fv("vMatrix", DisplayManager.Camera.GetViewMatrix().elements);
+            
+            
             
             // Gravity
             Gravity.ApplyGravity(this, this.GravityForce);
@@ -41,7 +44,7 @@ namespace Napicu.Engine
 
         protected void UpdatePosition()
         {
-            Matrix4f newPost = Matrix4f.Translate(new Vector2f(Position.x, Position.y));
+            Matrix4f newPost = Matrix4f.Translate(new Vector2f(Position.x, Position.y)); //TODO AL
             Shader.setUniformMatrix4fv("mMatrix", newPost.elements);
         }
 

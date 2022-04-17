@@ -19,10 +19,10 @@ namespace NapicuGame.Objects{
             Position = new Vector2f(x, y);
 
             float [] pos = new float [] {
-                0.0f, 0.0f,  1f, 0f, 1f,
-                0.0f, height,  1f, 1f, 0f,
-                width, height,  0f, 1f, 0f,
-                width, 0.0f,  0f, 0f, 1f,
+                0.0f, 0.0f,    1f, 0f, 1f,  1.0f, 1.0f,
+                0.0f, height,  1f, 1f, 0f,  1.0f, 0.0f,
+                width, height, 0f, 1f, 0f,  0.0f, 0.0f,
+                width, 0.0f,   0f, 0f, 1f,  0.0f, 1.0f
             };
 
             int[] ints = new[]
@@ -31,6 +31,7 @@ namespace NapicuGame.Objects{
                 2, 3, 0
             };
             
+
 
            
             

@@ -40,11 +40,12 @@ namespace Napicu.Engine
             CenterWindowPosition(width, height);
             Glfw.MakeContextCurrent(Window);
             
-            Import(Glfw.GetProcAddress);
-            
-            glEnable(GL_TEXTURE_2D);
+           Import(Glfw.GetProcAddress);
             
             glViewport(0, 0, width, height);
+           
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             Glfw.SwapInterval(1);//TODO Vsync
         }
 
