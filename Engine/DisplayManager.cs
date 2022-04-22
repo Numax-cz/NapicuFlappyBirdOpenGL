@@ -36,7 +36,10 @@ namespace Napicu.Engine
 
             
             Glfw.SetKeyCallback(Window, Keyboard.KeyCallback);
-            
+            Glfw.SetScrollCallback(Window, Mouse.ScrollCallback);
+            Glfw.SetMouseButtonCallback(Window, Mouse.ButtonCallback);
+            Glfw.SetCursorPositionCallback(Window, Mouse.PosCallback);
+
             CenterWindowPosition(width, height);
             Glfw.MakeContextCurrent(Window);
             

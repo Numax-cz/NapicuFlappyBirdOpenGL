@@ -30,6 +30,7 @@ namespace NapicuGame
         protected override void Update()
         {
 
+
         }
 
         protected override void Render()
@@ -55,6 +56,7 @@ namespace NapicuGame
             _player = new Block(500f, 500f, 300f, 300f);
 
 
+            
         }
     }
     

@@ -5,7 +5,6 @@ namespace NapicuGame.Objects{
     
     public class Block : GameObject
     {
-        
         protected override Shader Shader { get; set; } = new Shader("default.vert", "default.frag");
         protected override VertexArray Mesh { get; set; }
         public sealed override Vector2f Position { get; set; }
@@ -30,13 +29,7 @@ namespace NapicuGame.Objects{
                 1, 2, 3
             };
             
-
-
-           
-            
             Mesh = new VertexArray(pos, ints);
         }
-        
-
     }
 }
