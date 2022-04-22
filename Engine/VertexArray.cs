@@ -40,7 +40,6 @@ namespace Napicu.Engine
             // Bind Ibo
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Ibo);
 
-       
             
             // Set data to Vbo
             fixed (float* i = &vertices[0])
@@ -53,24 +52,19 @@ namespace Napicu.Engine
             {
                 glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float) * indices.Length, i, GL_STATIC_DRAW);
             }
-
-
-                
-
+            
             // Set vertex attribute pointers
-            glVertexAttribPointer(0, 2, GL_FLOAT, false, 7 * sizeof(float), (void*)0);
+            glVertexAttribPointer(0, 3, GL_FLOAT, false, 8 * sizeof(float), (void*)0);
             glEnableVertexAttribArray(0);
 
             // Set indices attribute pointer
-            glVertexAttribPointer(1, 3, GL_FLOAT, false, 7 * sizeof(float), (void*)(3* sizeof(float)));
+            glVertexAttribPointer(1, 3, GL_FLOAT, false, 8 * sizeof(float), (void*)(3* sizeof(float)));
             glEnableVertexAttribArray(1);
             
             // Set Texcoords attribute pointers
-            glVertexAttribPointer(2, 2, GL_FLOAT, false, 7 * sizeof(float), (void*)(6 * sizeof(float)));
+            glVertexAttribPointer(2, 2, GL_FLOAT, false, 8 * sizeof(float), (void*)(6 * sizeof(float)));
             glEnableVertexAttribArray(2);
 
-           
-  
             // Unbind Vbo
             glBindBuffer(GL_ARRAY_BUFFER, 0);
             // Unbind Ibo
