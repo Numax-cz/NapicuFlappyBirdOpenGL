@@ -5,11 +5,11 @@ namespace NapicuGame.Objects{
     
     public class Block : GameObject
     {
-        protected override Shader Shader { get; set; } = new Shader("default.vert", "default.frag");
         protected override VertexArray Mesh { get; set; }
-        public sealed override Vector2f Position { get; set; }
         protected override float GravityForce { get; set; } = 0f;
-        protected override Texture Texture { get; set; } = new Texture("D:/Dokumenty/NapicuEngine/Game/assets/wall.png");
+        protected override float VelocityForce { get; set; } = 0f;
+        protected override Texture Texture { get; set; } = new Texture("/Game/assets/wall.png");
+
 
         public Block(float x, float y, float width, float height)
         {

@@ -1,5 +1,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Net.Mime;
+using System.Reflection;
 using OpenGL;
 using static OpenGL.GL;
 using PixelFormat = System.Drawing.Imaging.PixelFormat;
@@ -15,12 +17,13 @@ public class Texture
     
     public Texture(string fileName)
     {
+        string path = System.IO.Directory.GetCurrentDirectory() + fileName;
         try
         {
-            Bitmap bitmap = new Bitmap(fileName);
-            bitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
-
+            Bitmap bitmap = new Bitmap(path);    
+            
             Id = glGenTexture();
+            
             glBindTexture(GL_TEXTURE_2D, Id);
             
             // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -33,6 +36,7 @@ public class Texture
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
             
             BitmapData bmpData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);;
             glTexImage2D((int)TextureTarget.Texture2d, 0, GL_RGBA, bmpData.Width, bmpData.Height, 0, (int)OpenGL
             .PixelFormat.Bgra, (int)OpenGL.PixelType.UnsignedByte, bmpData.Scan0);
             glGenerateMipmap( GL_TEXTURE_2D );
@@ -40,7 +44,7 @@ public class Texture
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            Console.WriteLine("Could not load texture path: " + path);
             throw;
         }
         

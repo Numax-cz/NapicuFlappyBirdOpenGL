@@ -19,7 +19,7 @@ namespace NapicuGame
 
         
         private static Renderer _renderer = new Renderer();
-        public Object _player;
+        public Player _player;
         
         
         public NapicuGame(string title, int width, int height) : base(title, width, height)
@@ -30,14 +30,21 @@ namespace NapicuGame
         protected override void Update()
         {
 
+            Keyboard.AddEventListener((int)GLFW.Keys.Space, () =>
+            {
+                this._player.Jump();
+                return 0;
+            }, true);
+            
 
+            
         }
 
         protected override void Render()
         { 
             glViewport(0, 0, Width, Height); 
-            glClearColor(MathF.Sin(EngineTime.TotalTime), 0, 0, 1);
-           //glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            //glClearColor(MathF.Sin(EngineTime.TotalTime), 0, 0, 1);
+           glClearColor(0, 0.568f, 1f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
             
             _player.Render();
@@ -53,7 +60,7 @@ namespace NapicuGame
 
         protected override void LoadContent()
         {
-            _player = new Block(500f, 500f, 300f, 300f);
+            _player = new Player(500f, 500f, 100f, 100f);
 
 
             

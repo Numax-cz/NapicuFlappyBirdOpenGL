@@ -27,9 +27,19 @@ namespace Napicu.Engine.Events
             }
         }
 
+        public static void AddEventListener(int code, Func<int> i, bool drop = false)
+        {
+            if (Get().keysPressed[code])
+            {
+                i();
+                if(drop) Get().keysPressed[code] = false;
+            }
+        }
+        
         public static bool IsKeyPressed(int code){
             return Get().keysPressed[code];
         }
+        
     }
     
 }
