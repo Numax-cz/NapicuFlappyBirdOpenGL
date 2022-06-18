@@ -28,7 +28,7 @@ namespace Napicu.Engine
             Glfw.WindowHint(Hint.ContextVersionMinor, 3);
             Glfw.WindowHint(Hint.OpenglProfile, Profile.Core);
             Glfw.WindowHint(Hint.Focused, true);
-            Glfw.WindowHint(Hint.Resizable, true);
+            Glfw.WindowHint(Hint.Resizable, false);
             //Creat window
             Window = Glfw.CreateWindow(width, height, title, GLFW.Monitor.None, Window.None);
 

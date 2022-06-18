@@ -17,7 +17,7 @@ namespace Napicu.Engine
         
         public Matrix4f GetProjection()
         {
-            projectionMatrix =  Matrix4f.Orthographic(0.0f, 1920, 0.0f, 1080, 0.0f, 100.0f);
+            projectionMatrix =  Matrix4f.Orthographic(0.0f, 1280, 0.0f, 720, 0.0f, 100.0f);
             return projectionMatrix;
         }
 

@@ -15,9 +15,8 @@ namespace NapicuGame
 {
     public class NapicuGame : Napicu.Engine.Engine
     {
-        private static Renderer _renderer = new Renderer();
         public Player _player;
-        public Pipe[] _Pipes = new Pipe[10];
+        public Pipe[] _pipes = new Pipe[10];
         
         
         public NapicuGame(string title, int width, int height) : base(title, width, height)
@@ -25,40 +24,55 @@ namespace NapicuGame
 
         }
         
-        protected override void Update()
+        
+        protected void UpdatePipes()
         {
-
-            Keyboard.AddEventListener((int)GLFW.Keys.Space, () =>
+            foreach (var pipe in _pipes)
             {
-                this._player.Jump();
-                return 0;
-            }, true);
-        }
-
-        protected void UpdatePipe()
-        {
-     
-
-        }
-
-        protected void CreatPipes()
-        {
-            for (int i = 0; i < 10; i += 2)
-            {
-                _renderer.Add(new Pipe(i * 300f, 40f, 100f, 200f));
-                var top_pipe = new Pipe(_renderer.GetObjects()[i].Position.x, _renderer.GetObjects()[i].Position.y + 1050, 100f, 
-                200f);
-                top_pipe.Rotate = 180;
-                _Pipes[i + 1] = top_pipe;
-                _renderer.Add(top_pipe);
+                pipe.Position.x -= 2.5f;
+                //TODO Get width
+                if (pipe.Position.x < 0)
+                {
+                    //pipe.SetX(1300);
+                }
             }
         }
 
 
         protected void CreatPlayer()
         {
-            _player = new Player(500f, 500f, 100f, 100f);
+            _player = new Player(500f, 500f, 70, 70);
         }
+        protected void CreatPipes()
+        {
+            for (int i = 0; i < 10; i += 2)
+            {
+                _pipes[i] = new Pipe(i * 300f, new Random().Next(50, 250), 70f, 250f);
+
+                var top_pipe = new Pipe(_pipes[i].Position.x, _pipes[i].Position.y + 800f , 70f, 250f);
+                top_pipe.Rotate = 180f;
+                _pipes[i + 1] = top_pipe; 
+            }
+        }
+
+
+        
+        
+        
+        
+        
+        protected override void Update()
+        {
+            this.UpdatePipes();
+            Keyboard.AddEventListener((int)GLFW.Keys.Space, () =>
+            {
+                this._player.Jump();
+                return 0;
+            }, true);
+        }
+        
+
+    
         
         protected override void Render()
         { 
@@ -69,7 +83,10 @@ namespace NapicuGame
             
             
 
-            _renderer.Render();
+            foreach (var pipe in _pipes)
+            {
+                pipe.Render();
+            }
             _player.Render();
                 
             Glfw.SwapBuffers(DisplayManager.Window);
