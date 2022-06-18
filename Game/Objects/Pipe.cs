@@ -3,15 +3,15 @@ using Napicu.Engine.Math;
 
 namespace NapicuGame.Objects{
     
-    public class Block : GameObject
+    public class Pipe : GameObject
     {
         protected override VertexArray Mesh { get; set; }
         protected override float GravityForce { get; set; } = 0f;
         protected override float VelocityForce { get; set; } = 0f;
-        protected override Texture Texture { get; set; } = new Texture("/Game/assets/wall.png");
+        protected override Texture Texture { get; set; } = new Texture("/Game/assets/pipe.png");
 
 
-        public Block(float x, float y, float width, float height)
+        public Pipe(float x, float y, float width, float height)
         {
             Position = new Vector2f(x, y);
 

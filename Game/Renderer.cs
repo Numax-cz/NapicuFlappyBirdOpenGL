@@ -25,6 +25,11 @@ namespace NapicuGame
                 obj.Render();
             }
         }
+        
+        public List<GameObject> GetObjects()
+        {
+            return this.Objects;
+        }
     }
 }
     

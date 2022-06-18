@@ -6,12 +6,12 @@ namespace NapicuGame.Objects;
 public class Player : GameObject
 {
     protected override VertexArray Mesh { get; set; }
-    protected override float GravityForce { get; set; } = 0.85f;
+    protected override float GravityForce { get; set; } = 0.955f;
     protected override float VelocityForce { get; set; } = 0;
     protected override Texture Texture { get; set; } = new Texture("/Game/assets/bird.png");
 
 
-    protected float rotateVelocity = 0;
+    protected float rotateDelta = 0;
     public Player(float x, float y, float width, float height)
     {
         Position = new Vector2f(x, y);
@@ -35,16 +35,15 @@ public class Player : GameObject
 
     protected override void OnUpdate()
     {
-        this.Rotate += this.rotateVelocity;
-        this.rotateVelocity *= 0.8f;
-        this.rotateVelocity -= 0.5f;
+        this.rotateDelta +=  0.01f;
 
+        this.Rotate = - this.rotateDelta * 90;
     }
     
     
     public void Jump()
     {
-        this.Velocity.y += 20;
-        this.rotateVelocity += 70;
+        this.Velocity.y += 35;
+        this.rotateDelta = - 0.20f;
     }
 }

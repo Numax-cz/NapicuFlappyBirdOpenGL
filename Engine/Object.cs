@@ -39,7 +39,6 @@ namespace Napicu.Engine
             Shader.setUniformMatrix4fv("pMatrix", DisplayManager.Camera.GetProjection().elements);
             Shader.setUniformMatrix4fv("vMatrix", DisplayManager.Camera.GetViewMatrix().elements);
             
-
             // Gravity
             Gravity.ApplyGravity(this, this.GravityForce);
             // Update the position

@@ -26,16 +26,20 @@ namespace Napicu.Engine
             DisplayManager.Creat(Title, Width, Height);
             
             this.LoadContent();
+            
+   
 
             while (!Glfw.WindowShouldClose(DisplayManager.Window))
             {
+
                 EngineTime.DeltaTime = (float)Glfw.Time - EngineTime.TotalTime;
                 EngineTime.TotalTime = (float)Glfw.Time;
-                this.Update();
+         
 
+                this.Update();
                 Glfw.PollEvents();
-                
                 this.Render();
+     
             }
             DisplayManager.CloseWindow();
         }

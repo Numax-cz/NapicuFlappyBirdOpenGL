@@ -14,10 +14,13 @@ namespace Napicu.Engine
         public static Window Window { get; set; }
         public static Vector2 WindowSize { get; set; }
         public static Camera Camera { get; set; } = new Camera(new Vector2f());
+        
+        private static KeyCallback keyCallback;
 
         public static void Creat(string title, int width, int height)
         {
             WindowSize = new Vector2(width, height);
+            keyCallback = (Window window, Keys key, int scanCode, InputState state, ModifierKeys mods) => Keyboard.KeyCallback(window , key, scanCode, state, mods);
             Glfw.Init();
             //OpenGL configuration
             Glfw.WindowHint(Hint.ClientApi, ClientApi.OpenGL);
@@ -34,16 +37,13 @@ namespace Napicu.Engine
                 return;
             }
 
-            
-            Glfw.SetKeyCallback(Window, Keyboard.KeyCallback);
-            Glfw.SetScrollCallback(Window, Mouse.ScrollCallback);
-            Glfw.SetMouseButtonCallback(Window, Mouse.ButtonCallback);
-            Glfw.SetCursorPositionCallback(Window, Mouse.PosCallback);
+            Glfw.SetKeyCallback(Window, keyCallback);
 
             CenterWindowPosition(width, height);
+
             Glfw.MakeContextCurrent(Window);
             
-           Import(Glfw.GetProcAddress);
+             Import(Glfw.GetProcAddress);
             
             glViewport(0, 0, width, height);
            
