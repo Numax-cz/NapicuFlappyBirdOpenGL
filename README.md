@@ -1,1 +1,1 @@
-# NapicuOpenGLFlappyBird - Preview
+# NapicuFlappyBirdOpenGL - Preview
